@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="14109" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <device id="retina4_7" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
+        <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" rowHeight="90" id="KGk-i7-Jjw" customClass="MainBookInfoCell">
+            <rect key="frame" x="0.0" y="0.0" width="492" height="90"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <rect key="frame" x="0.0" y="0.0" width="492" height="89.5"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="placeholder_empty" translatesAutoresizingMaskIntoConstraints="NO" id="edV-Zy-htJ">
+                        <rect key="frame" x="8" y="8" width="52" height="73.5"/>
+                        <constraints>
+                            <constraint firstAttribute="width" secondItem="edV-Zy-htJ" secondAttribute="height" multiplier="33:47" id="kUk-fA-DtE"/>
+                        </constraints>
+                    </imageView>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="asW-I4-d2N">
+                        <rect key="frame" x="68" y="8" width="416" height="0.0"/>
+                        <fontDescription key="fontDescription" type="boldSystem" pointSize="15"/>
+                        <nil key="textColor"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kx8-FD-j7i">
+                        <rect key="frame" x="68" y="16" width="416" height="0.0"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                        <color key="textColor" red="0.4756349325" green="0.47564673419999998" blue="0.47564041610000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <nil key="highlightedColor"/>
+                    </label>
+                    <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="grade_line" translatesAutoresizingMaskIntoConstraints="NO" id="MVx-c3-t8l">
+                        <rect key="frame" x="20" y="88.5" width="472" height="0.5"/>
+                        <constraints>
+                            <constraint firstAttribute="height" constant="0.69999999999999996" id="dLC-KE-slF"/>
+                        </constraints>
+                    </imageView>
+                </subviews>
+                <constraints>
+                    <constraint firstAttribute="bottom" secondItem="edV-Zy-htJ" secondAttribute="bottom" constant="8" id="22Y-QC-zBz"/>
+                    <constraint firstItem="edV-Zy-htJ" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="3Cm-cM-Kb4"/>
+                    <constraint firstItem="asW-I4-d2N" firstAttribute="leading" secondItem="edV-Zy-htJ" secondAttribute="trailing" constant="8" id="6Cj-Ad-MZH"/>
+                    <constraint firstItem="edV-Zy-htJ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="9Sh-gB-cqf"/>
+                    <constraint firstItem="asW-I4-d2N" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="8" id="AQL-K2-Vv5"/>
+                    <constraint firstAttribute="trailing" secondItem="MVx-c3-t8l" secondAttribute="trailing" id="EwW-kp-jKr"/>
+                    <constraint firstAttribute="bottom" secondItem="MVx-c3-t8l" secondAttribute="bottom" id="UDo-C5-7yA"/>
+                    <constraint firstItem="MVx-c3-t8l" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="20" id="ViP-Bw-g5g"/>
+                    <constraint firstAttribute="trailing" secondItem="kx8-FD-j7i" secondAttribute="trailing" constant="8" id="dFQ-VQ-N01"/>
+                    <constraint firstAttribute="trailing" secondItem="asW-I4-d2N" secondAttribute="trailing" constant="8" id="gEh-nv-0gM"/>
+                    <constraint firstItem="kx8-FD-j7i" firstAttribute="leading" secondItem="edV-Zy-htJ" secondAttribute="trailing" constant="8" id="gXg-hh-xqO"/>
+                    <constraint firstItem="kx8-FD-j7i" firstAttribute="top" secondItem="asW-I4-d2N" secondAttribute="bottom" constant="8" id="hI0-d7-8kn"/>
+                </constraints>
+            </tableViewCellContentView>
+            <connections>
+                <outlet property="bookImageV" destination="edV-Zy-htJ" id="pDY-pf-Swd"/>
+                <outlet property="bookNameLabel" destination="asW-I4-d2N" id="Wy2-lE-nLq"/>
+                <outlet property="bookRecordLabel" destination="kx8-FD-j7i" id="ZgM-0s-opc"/>
+            </connections>
+            <point key="canvasLocation" x="-52" y="77"/>
+        </tableViewCell>
+    </objects>
+    <resources>
+        <image name="grade_line" width="5" height="5"/>
+        <image name="placeholder_empty" width="210" height="280"/>
+    </resources>
+</document>
