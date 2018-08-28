@@ -113,10 +113,8 @@ time DATETIME NOT NULL\
 #define kHYDBUpdateBookSource(related_id, source_name, book_url) @"UPDATE t_book_info set source_name=?,book_url=? WHERE related_id=?",source_name, book_url, related_id
 
 
-/*-----------------------------------------  other  ----------------------------------------------------*/
+/*-----------------------------------------  record_book  ----------------------------------------------------*/
 #define kHYDBSelectBookInfosAndRecord @"SELECT * FROM t_book_info B LEFT OUTER JOIN t_record R ON related_id = R.book_id order by user_select_time desc"
-
-
 
 
 #endif /* HYDatabaseMacros_h */

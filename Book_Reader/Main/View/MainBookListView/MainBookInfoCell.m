@@ -7,7 +7,7 @@
 //
 
 #import "MainBookInfoCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import <YYWebImage/YYWebImage.h>
 
 @interface MainBookInfoCell()
 @property (weak, nonatomic) IBOutlet UIImageView *bookImageV;
@@ -16,16 +16,16 @@
 
 @end
 @implementation MainBookInfoCell
-
 - (void)setModel:(BookSaveInfoModel *)model
 {
     _model = model;
     
-    [_bookImageV sd_setImageWithURL:[NSURL URLWithString:_model.bookInfo.book_image] placeholderImage:kGetImage(@"placeholder_loding") options:SDWebImageProgressiveDownload | SDWebImageAllowInvalidSSLCertificates completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+    [_bookImageV yy_setImageWithURL:[NSURL URLWithString:_model.bookInfo.book_image] placeholder:nil options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
         if (error){
             [self.bookImageV setImage:kGetImage(@"placeholder_empty")];
         }
     }];
+    
     
     _bookNameLabel.text = _model.bookInfo.book_name;
     NSString* rc = _model.bookRecord.chapter_name?:@"还未开始阅读";

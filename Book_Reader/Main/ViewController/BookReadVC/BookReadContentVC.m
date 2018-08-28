@@ -59,21 +59,18 @@
 - (void)initialSubViews
 {
     _contentView = [[BookReadTextView alloc] initWithText:_text];
-//    _contentView.frame = CGRectMake(15, 30, kScreenWidth-30, kScreenHeight-60);
     _contentView.backgroundColor = [UIColor clearColor];
     [self.view addSubview:_contentView];
     
     self.view.backgroundColor = HYUserDefault.readBackColor?:UIHexColor(0xa39e8b);
     
     _chapterNameLabel = [[UILabel alloc] init];
-//    _chapterNameLabel.frame = CGRectMake(15, 8, kScreenWidth-30, 20);
     _chapterNameLabel.text = self.chapterName;
     _chapterNameLabel.font = [UIFont systemFontOfSize:12];
     _chapterNameLabel.textColor = HYUserDefault.readInfoColor?:UIHexColor(0x655a46);
     [self.view addSubview:_chapterNameLabel];
     
     _indexLabel = [[UILabel alloc] init];
-//    _indexLabel.frame = CGRectMake(200, kScreenHeight-28, 150, 20);
     _indexLabel.textColor  = HYUserDefault.readInfoColor?:UIHexColor(0x655a46);
     _indexLabel.text = [NSString stringWithFormat:@"第%ld/%ld页",self.index,self.totalNum];
     _indexLabel.font = [UIFont systemFontOfSize:12];
@@ -81,7 +78,6 @@
     [self.view addSubview:_indexLabel];
     
     _timeLabel = [[UILabel alloc] init];
-//    _timeLabel.frame = CGRectMake(15, kScreenHeight-28, 150, 20);
     _timeLabel.font = [UIFont systemFontOfSize:12];
     _timeLabel.textColor = HYUserDefault.readInfoColor?:UIHexColor(0x655a46);
     [self.view addSubview:_timeLabel];

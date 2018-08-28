@@ -19,6 +19,8 @@
 @property (nonatomic,strong) BookSetingView* settingView;
 @property (nonatomic,strong) UIView* brightnessView;
 
+@property (nonatomic,strong) UISwipeGestureRecognizer* swipe;
+
 /* 放置到pageView的上层,用于在滑动模式下让控制器可以响应点击事件*/
 @property (nonnull,strong) UIView* backTapView;
 @end
@@ -27,21 +29,12 @@
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    UITouch* touch = touches.anyObject;
-    CGPoint point = [touch locationInView:self.view];
-    CGRect setView;
-    if (self.navigationController.navigationBarHidden){
-        setView = CGRectMake(kScreenWidth/3, kScreenHeight/3, kScreenWidth/3, kScreenHeight/3);
-        _backTapView.frame = CGRectMake(kScreenWidth/3, kScreenHeight/3, kScreenWidth/3, kScreenHeight/3);
-    }
-    else{
-        setView = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-        _backTapView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
-    }
 
-    if (CGRectContainsPoint(setView,point) && !self.chapterView.isShowMulu){
-        [self hideNaviBarWithAnimated:YES];
-    }
+}
+
+- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    
 }
 
 - (void)viewDidLoad
@@ -71,8 +64,8 @@
 - (void)initialNavi
 {
     
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    self.navigationController.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.navigationController.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     self.navigationController.navigationBar.backgroundColor = UIHexColor(0xf1f1f1);
@@ -154,7 +147,14 @@
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:_pageViewController.view];
     
+    UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(doNothing)];
+    self.swipe = swipe;
+    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeNaviBarHidenWithAnimated)];
+    
     _backTapView = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth/3, kScreenHeight/3, kScreenWidth/3, kScreenHeight/3)];
+    [_backTapView addGestureRecognizer:swipe];
+    [_backTapView addGestureRecognizer:tap];
+    
     _backTapView.userInteractionEnabled = YES;
     _backTapView.backgroundColor = [UIColor clearColor];
     [self.view insertSubview:_backTapView atIndex:1];
@@ -227,11 +227,17 @@
 }
 
 #pragma mark - func
+- (void)doNothing
+{
+    
+}
+
 - (void)naviLeftBarItemClick
 {
     if (![self.navigationController popViewControllerAnimated:YES]){
         [self dismissViewControllerAnimated:YES completion:nil];
     }
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
 }
 
 - (void)naviRightBarItemClick
@@ -279,26 +285,30 @@
     [self.viewModel reloadContentViews];
 }
 
-- (void)hideNaviBarWithAnimated:(BOOL)animated
+- (void)changeNaviBarHidenWithAnimated
 {
     self.settingView.hidden = YES;
     if (self.navigationController.navigationBarHidden){
-        [self.navigationController setNavigationBarHidden:NO animated:animated];
-        if (animated){
-            [UIView animateWithDuration:0.3 animations:^{
-                [self setNeedsStatusBarAppearanceUpdate];
-                self.navigationController.toolbarHidden = NO;
-            }];
-        }
+        
+        [self.navigationController setNavigationBarHidden:NO animated:NO];
+        [self setNeedsStatusBarAppearanceUpdate];
+        self.navigationController.toolbarHidden = NO;
+
+        _backTapView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     }else{
-        [self.navigationController setNavigationBarHidden:YES animated:animated];
-        if (animated){
-            [UIView animateWithDuration:0.3 animations:^{
-                [self setNeedsStatusBarAppearanceUpdate];
-                self.navigationController.toolbarHidden = YES;
-            }];
-        }
+        [self.navigationController setNavigationBarHidden:YES animated:NO];
+        [self setNeedsStatusBarAppearanceUpdate];
+        self.navigationController.toolbarHidden = YES;
+        
+        _backTapView.frame = CGRectMake(kScreenWidth/3, kScreenHeight/3, kScreenWidth/3, kScreenHeight/3);
     }
+}
+
+- (void)hidenNaviBar
+{
+    [self.navigationController setNavigationBarHidden:YES animated:NO];
+    self.navigationController.toolbarHidden = YES;
+    [self setNeedsStatusBarAppearanceUpdate];
 }
 
 /* 章节数据加载成功*/
@@ -311,12 +321,12 @@
     [_pageViewController.view removeFromSuperview];
     _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:HYUserDefault.PageTransitionStyle navigationOrientation:HYUserDefault.PageNaviOrientation options:nil];
     
+    
     _pageViewController.delegate = self;
     _pageViewController.dataSource = self;
     /* 通过双面显示,解决UIPageViewController仿真翻页时背面发白的问题*/
     _pageViewController.doubleSided = HYUserDefault.PageTransitionStyle==UIPageViewControllerTransitionStylePageCurl?YES:NO;
     
-    [self.view insertSubview:_pageViewController.view atIndex:0];
     _pageViewController.view.backgroundColor = HYUserDefault.readBackColor?:UIHexColor(0xa39e8b);
     
     
@@ -325,6 +335,7 @@
                                        animated:NO
                                      completion:nil];
     
+    [self.view insertSubview:_pageViewController.view atIndex:0];
 }
 
 /* 章节数据加载失败*/

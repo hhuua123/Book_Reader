@@ -1,4 +1,3 @@
-
 target 'Book_Reader' do
 platform:ios,'8.0'
 use_frameworks!
@@ -6,7 +5,8 @@ use_frameworks!
 pod 'Masonry'
 pod 'IQKeyboardManager'
 pod 'AFNetworking'
-pod 'SDWebImage'
+# pod 'SDWebImage'
+pod 'YYWebImage'
 pod 'MJExtension'
 pod 'FMDB'
 pod 'MMDrawerController'

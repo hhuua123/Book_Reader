@@ -76,6 +76,7 @@
 		52C41F6921008C97006B9BFC /* BooksourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C41F6821008C97006B9BFC /* BooksourceModel.m */; };
 		52C41F6D2101861D006B9BFC /* BookSortVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C41F6C2101861D006B9BFC /* BookSortVC.m */; };
 		52C41F7221057A9E006B9BFC /* BookSourceListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C41F7121057A9E006B9BFC /* BookSourceListVC.m */; };
+		52ED7F5821353A6E004E261E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 52ED7F5721353A6E004E261E /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -212,6 +213,7 @@
 		52C41F6C2101861D006B9BFC /* BookSortVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookSortVC.m; sourceTree = "<group>"; };
 		52C41F7021057A9E006B9BFC /* BookSourceListVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookSourceListVC.h; sourceTree = "<group>"; };
 		52C41F7121057A9E006B9BFC /* BookSourceListVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookSourceListVC.m; sourceTree = "<group>"; };
+		52ED7F5721353A6E004E261E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		65C31F6E3860E4E6E415D324 /* Pods_Book_Reader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Book_Reader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8CFB40E5483280BF711661 /* Pods-Book_Reader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Book_Reader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Book_Reader/Pods-Book_Reader.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -240,6 +242,7 @@
 		5222059A20E0757D00210706 = {
 			isa = PBXGroup;
 			children = (
+				52ED7F5721353A6E004E261E /* README.md */,
 				52B8640C210AC13B00F26571 /* .gitignore */,
 				522205F520E07E4800210706 /* Podfile */,
 				522205A520E0757D00210706 /* Book_Reader */,
@@ -802,6 +805,7 @@
 				522205F620E07E4800210706 /* Podfile in Resources */,
 				52B8640D210AC13B00F26571 /* .gitignore in Resources */,
 				522206B820EB427200210706 /* MainBookRightCell.xib in Resources */,
+				52ED7F5821353A6E004E261E /* README.md in Resources */,
 				522206B020EB289C00210706 /* MainBookInfoCell.xib in Resources */,
 				5222069020E6245D00210706 /* HYEmptyViewImage.bundle in Resources */,
 				522205E220E07A9700210706 /* MBProgressHUD.bundle in Resources */,
@@ -845,7 +849,9 @@
 				"${BUILT_PRODUCTS_DIR}/MJRefresh/MJRefresh.framework",
 				"${BUILT_PRODUCTS_DIR}/MMDrawerController/MMDrawerController.framework",
 				"${BUILT_PRODUCTS_DIR}/Masonry/Masonry.framework",
-				"${BUILT_PRODUCTS_DIR}/SDWebImage/SDWebImage.framework",
+				"${BUILT_PRODUCTS_DIR}/YYCache/YYCache.framework",
+				"${BUILT_PRODUCTS_DIR}/YYImage/YYImage.framework",
+				"${BUILT_PRODUCTS_DIR}/YYWebImage/YYWebImage.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
@@ -856,7 +862,9 @@
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MJRefresh.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/MMDrawerController.framework",
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Masonry.framework",
-				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/SDWebImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYCache.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYImage.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/YYWebImage.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;

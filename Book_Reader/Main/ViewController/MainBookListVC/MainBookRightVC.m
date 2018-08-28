@@ -25,7 +25,7 @@
     [super viewDidLoad];
     
     [self initialSubViews];
-    [self initData];
+    [self initialData];
 }
 
 - (void)initialSubViews
@@ -48,7 +48,7 @@
     }];
 }
 
-- (void)initData
+- (void)initialData
 {
     self.bookApi = [[HYBookAPIs alloc] init];
 }

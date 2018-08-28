@@ -8,13 +8,13 @@
 
 #import "BookInfoVC.h"
 #import "UIImage+Color.h"
-#import <SDWebImage/UIImageView+WebCache.h>
 #import "BookInfoModel.h"
 #import "BookReadVC.h"
 #import "BookReadAPIVM.h"
 #import "HYDatabase.h"
 #import "HYBookAPIs.h"
 #import "BookSearchListVC.h"
+#import <YYWebImage/YYWebImage.h>
 
 @interface BookInfoVC ()
 @property (nonatomic,strong) BookInfoModel* model;
@@ -70,9 +70,11 @@
     self.bookApi = [[HYBookAPIs alloc] init];
     self.database = [HYDatabase sharedDatabase];
     
-    [_imageV sd_setImageWithURL:[NSURL URLWithString:_model.book_image] placeholderImage:kGetImage(@"placeholder_loding") completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+
+    
+    [_imageV yy_setImageWithURL:[NSURL URLWithString:_model.book_image] placeholder:nil options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
         if (error){
-            self.imageV.image = kGetImage(@"placeholder_empty");
+            [self.imageV setImage:kGetImage(@"placeholder_empty")];
         }
     }];
     

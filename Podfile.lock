@@ -33,9 +33,13 @@ PODS:
     - MMDrawerController/Core
   - MMDrawerController/Subclass (0.6.0):
     - MMDrawerController/Core
-  - SDWebImage (4.4.1):
-    - SDWebImage/Core (= 4.4.1)
-  - SDWebImage/Core (4.4.1)
+  - YYCache (1.0.4)
+  - YYImage (1.0.4):
+    - YYImage/Core (= 1.0.4)
+  - YYImage/Core (1.0.4)
+  - YYWebImage (1.0.5):
+    - YYCache
+    - YYImage
 
 DEPENDENCIES:
   - AFNetworking
@@ -45,7 +49,7 @@ DEPENDENCIES:
   - MJExtension
   - MJRefresh
   - MMDrawerController
-  - SDWebImage
+  - YYWebImage
 
 SPEC REPOS:
   https://github.com/cocoapods/specs.git:
@@ -56,7 +60,9 @@ SPEC REPOS:
     - MJExtension
     - MJRefresh
     - MMDrawerController
-    - SDWebImage
+    - YYCache
+    - YYImage
+    - YYWebImage
 
 SPEC CHECKSUMS:
   AFNetworking: b6f891fdfaed196b46c7a83cf209e09697b94057
@@ -66,8 +72,10 @@ SPEC CHECKSUMS:
   MJExtension: 19bc33ce2eee2d319760f5622562cf581a6ff756
   MJRefresh: b48380ae2b927b46c4ef000de9adb8dc748e1df7
   MMDrawerController: e3a54a5570388463ad3b36975251575b50c4e1a0
-  SDWebImage: 47e9b5b925cbce75946c23f0c42dd19464189af4
+  YYCache: 8105b6638f5e849296c71f331ff83891a4942952
+  YYImage: 1e1b62a9997399593e4b9c4ecfbbabbf1d3f3b54
+  YYWebImage: 5f7f36aee2ae293f016d418c7d6ba05c4863e928
 
-PODFILE CHECKSUM: 2c581150d16454b0debf74a6d267db80f85337fa
+PODFILE CHECKSUM: 59b50a6b285a75d2edcb7be0c2ec5e3f4c076d5d
 
 COCOAPODS: 1.5.3

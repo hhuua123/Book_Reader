@@ -211,7 +211,7 @@ static void objectSetter(GVUserDefaults *self, SEL _cmd, id object) {
         }
         SEL setterSel = sel_registerName(setter);
         free(setter);
-
+        
         NSString *key = [self defaultsKeyForPropertyNamed:name];
         [self.mapping setValue:key forKey:NSStringFromSelector(getterSel)];
         [self.mapping setValue:key forKey:NSStringFromSelector(setterSel)];

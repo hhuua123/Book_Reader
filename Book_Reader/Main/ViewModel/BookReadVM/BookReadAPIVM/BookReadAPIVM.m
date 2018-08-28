@@ -66,7 +66,7 @@
  */
 - (void)initialData
 {
-    /* 用于处理换源的情况*/
+    /* 从数据库查找一次,用于处理换源的情况*/
     BookInfoModel* dbModel = [self.database selectBookInfoWithRelatedId:self.model.related_id];
     if (dbModel){
         self.model = dbModel;
@@ -205,7 +205,6 @@
 }
 
 /**
- *
  * 加载章节列表
  */
 - (void)loadChaptersWithRecord:(BOOL)isRecord
@@ -339,7 +338,7 @@
     bvc.view.alpha = 1;
     
     __weak typeof(vc) weakvc = vc;
-    kDISPATCH_ON_GLOBAL_QUEUE_HIGH(^(){
+    kDISPATCH_ON_GLOBAL_QUEUE_DEFAULT(^(){
         __strong typeof(weakvc) strongvc = weakvc;
         
         UIImage* image = [strongvc.view screenshot];

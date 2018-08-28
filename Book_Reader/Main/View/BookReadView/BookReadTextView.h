@@ -10,6 +10,7 @@
 
 /* 用于文本渲染的view*/
 @interface BookReadTextView : UIView
+
 /* 需要渲染的文本*/
 @property (nonatomic,copy) NSString* text;
 - (instancetype)initWithText:(NSString*)text;

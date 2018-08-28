@@ -7,7 +7,7 @@
 //
 
 #import "BookInfoCell.h"
-#import <SDWebImage/UIImageView+WebCache.h>
+#import <YYWebImage/YYWebImage.h>
 
 @interface BookInfoCell()
 @property (weak, nonatomic) IBOutlet UIImageView *imageV;
@@ -22,18 +22,17 @@
 {
     _model = model;
     
-    if (!kStringIsEmpty(model.book_image))
-        [_imageV sd_setImageWithURL:[NSURL URLWithString:_model.book_image] placeholderImage:kGetImage(@"placeholder_loding") options:SDWebImageProgressiveDownload | SDWebImageAllowInvalidSSLCertificates completed:^(UIImage * _Nullable image, NSError * _Nullable error, SDImageCacheType cacheType, NSURL * _Nullable imageURL) {
+    if (!kStringIsEmpty(model.book_image)){
+        [_imageV yy_setImageWithURL:[NSURL URLWithString:_model.book_image] placeholder:nil options:YYWebImageOptionProgressiveBlur|YYWebImageOptionSetImageWithFadeAnimation completion:^(UIImage * _Nullable image, NSURL * _Nonnull url, YYWebImageFromType from, YYWebImageStage stage, NSError * _Nullable error) {
             if (error){
-                HYDebugLog(@"%@",imageURL.absoluteString);
                 [self.imageV setImage:kGetImage(@"placeholder_empty")];
             }
         }];
-        
+    }
+    
     _bookNameLabel.text = model.book_name;
     _authorLabel.text = model.author;
     _descriptionLabel.text = model.book_desc;
-    
 }
 
 - (void)awakeFromNib

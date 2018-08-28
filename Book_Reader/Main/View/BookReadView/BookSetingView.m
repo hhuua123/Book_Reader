@@ -261,6 +261,7 @@
     }];
 }
 
+#pragma mark - init
 - (UILabel*)titleLabelWithTitle:(NSString*)title
 {
     UILabel* label = [[UILabel alloc] init];
@@ -295,6 +296,7 @@
     return btn;
 }
 
+#pragma mark - reloadView
 - (void)reloadSpaceBtn
 {
     NSDictionary* dic = HYUserDefault.userReadAttConfig;
@@ -347,12 +349,15 @@
     if (CGColorEqualToColor(backColor.CGColor, UIHexColor(0xf5f5f2).CGColor)){
         _backBtn1.layer.borderColor = UIHexColor(0x44b750).CGColor;
         _backBtn1.layer.borderWidth = 2.0;
+        
     }else if (CGColorEqualToColor(backColor.CGColor, UIHexColor(0xa39e8b).CGColor)){
         _backBtn2.layer.borderColor = UIHexColor(0x44b750).CGColor;
         _backBtn2.layer.borderWidth = 2.0;
+        
     }else if (CGColorEqualToColor(backColor.CGColor, UIHexColor(0xfbe1e1).CGColor)){
         _backBtn3.layer.borderColor = UIHexColor(0x44b750).CGColor;
         _backBtn3.layer.borderWidth = 2.0;
+        
     }else if (CGColorEqualToColor(backColor.CGColor, UIHexColor(0xd5e7c8).CGColor)){
         _backBtn4.layer.borderColor = UIHexColor(0x44b750).CGColor;
         _backBtn4.layer.borderWidth = 2.0;

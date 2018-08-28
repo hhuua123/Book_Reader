@@ -16,7 +16,6 @@
 
 @end
 @implementation MainBookRightCell
-
 - (void)changeBackColor:(UIColor*)color Image:(UIImage*)image Name:(NSString*)name
 {
     self.imageBackView.backgroundColor = color;

@@ -9,6 +9,7 @@
 #import "HYBaseViewController.h"
 #import "BookInfoModel.h"
 
+/* 书源选择列表界面*/
 typedef void (^selectSource)(void);
 @interface BookSourceListVC : HYBaseViewController
 

@@ -24,7 +24,7 @@ typedef void (^Fail)(NSError* err);
 @interface HYBookAPIs : NSObject
 
 /**
- * 根据keyword搜索书本信息
+ * 根据书名搜索书本信息
  */
 - (void)searchBookWithKeyWord:(NSString*)kw
                         Start:(NSInteger)start
@@ -39,6 +39,24 @@ typedef void (^Fail)(NSError* err);
                         Start:(NSInteger)start
                       Success:(BookInfosSuccess)success
                          Fail:(Fail)fail;
+
+/**
+ * 根据分类名称进行搜索
+ */
+- (void)searchBookWithSortName:(NSString*)sortName
+                         Start:(NSInteger)start
+                       Success:(BookInfosSuccess)success
+                          Fail:(Fail)fail;
+
+
+/**
+ * 搜索书本分类
+ * map k-v:
+ * book_sort: 分类名
+ * sort_count: 分类书本数量
+ */
+- (void)searchBookSortWithSuccess:(BookSortSuccess)success
+                             Fail:(Fail)fail;
 
 
 /**
@@ -82,25 +100,6 @@ typedef void (^Fail)(NSError* err);
 - (void)searchBookSourceWithRelatedId:(NSString*)relatedId
                               Success:(BookSourceSuccess)success
                                  Fail:(Fail)fail;
-
-
-/**
- * 搜索书本分类
- * map k-v:
- * book_sort: 分类名
- * sort_count: 分类书本数量
- */
-- (void)searchBookSortWithSuccess:(BookSortSuccess)success
-                             Fail:(Fail)fail;
-
-
-/**
- * 根据分类名称进行搜索
- */
-- (void)searchBookWithSortName:(NSString*)sortName
-                         Start:(NSInteger)start
-                       Success:(BookInfosSuccess)success
-                          Fail:(Fail)fail;
 
 
 /**
