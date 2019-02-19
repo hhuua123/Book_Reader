@@ -71,6 +71,12 @@ typedef void (^HubFail)(NSString* text);
 /* 获取书本信息model*/
 - (BookInfoModel*)getBookInfoModel;
 
+/* 删除当前章节的缓存*/
+- (void)deleteChapterSave;
+
+/* 删除全书章节缓存*/
+- (void)deleteBookChapterSave;
+
 
 @end
 

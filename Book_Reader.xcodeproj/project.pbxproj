@@ -216,6 +216,7 @@
 		52ED7F5721353A6E004E261E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		65C31F6E3860E4E6E415D324 /* Pods_Book_Reader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Book_Reader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8CFB40E5483280BF711661 /* Pods-Book_Reader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Book_Reader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Book_Reader/Pods-Book_Reader.debug.xcconfig"; sourceTree = "<group>"; };
+		BD6B7F8F221BF5BF000E5C19 /* HYHigherOrderFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYHigherOrderFunc.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -372,6 +373,7 @@
 		522205D320E07A9700210706 /* Macros */ = {
 			isa = PBXGroup;
 			children = (
+				BD6B7F8F221BF5BF000E5C19 /* HYHigherOrderFunc.h */,
 				522205D620E07A9700210706 /* HYMacros.h */,
 				522205D420E07A9700210706 /* HYRegulaStrMacro.h */,
 				522205D520E07A9700210706 /* HYNotificationMacros.h */,

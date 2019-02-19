@@ -78,6 +78,14 @@
             HYDebugLog(@"add column 'user_select_time' for table 't_book_info' error:%@",[self.database lastErrorMessage]);
         }
     }
+    
+    if (![self.database columnExists:@"t_chapter_text" inTableWithName:@"book_id"]){
+        NSString* sql = @"alter tabel t_chapter_text add book_id TEXT NOT NULL";
+        BOOL success = [self.database executeUpdate:sql];
+        if (!success){
+            HYDebugLog(@"add colume 'book_id' for table 't_chapter_text' error:%@",[self.database lastErrorMessage]);
+        }
+    }
 }
 
 #pragma mark - 章节内容
@@ -88,7 +96,7 @@
     
     [self.databaseQueue inDatabase:^(FMDatabase * _Nonnull db) {
         if ([db open]){
-            BOOL insert = [db executeUpdate:kHYDBInsertChapterText(model.url,model.info,[NSDate date])];
+            BOOL insert = [db executeUpdate:kHYDBInsertChapterText(model.url,model.info,[NSDate date], model.book_id)];
             if(!insert){
                 HYDebugLog(@"insert BookChapterTextModel url = %@ error:%@",model.url,[db lastErrorMessage]);
             }
@@ -110,6 +118,42 @@
     }
     
     return nil;
+}
+
+- (BOOL)deleteChapterTextWithUrl:(NSString*)url
+{
+    if (kStringIsEmpty(url))
+        return NO;
+    
+    [self.databaseQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        if ([db open]){
+            BOOL del = [db executeUpdate:kHYDBDeleteChapterTextWithUrl(url)];
+            if (!del){
+                HYDebugLog(@"delete chapter_text where url = %@ error:%@",url,[db lastErrorMessage]);
+            }
+        }
+        [db close];
+    }];
+    
+    return YES;
+}
+
+- (BOOL)deleteChapterTextWithBookId:(NSString*)bookid
+{
+    if (kStringIsEmpty(bookid))
+        return NO;
+    
+    [self.databaseQueue inDatabase:^(FMDatabase * _Nonnull db) {
+        if ([db open]){
+            BOOL del = [db executeUpdate:kHYDBDeleteChapterTextWithBookId(bookid)];
+            if (!del){
+                HYDebugLog(@"delete chapter_text where book_id = %@ error:%@",bookid,[db lastErrorMessage]);
+            }
+        }
+        [db close];
+    }];
+    
+    return YES;
 }
 
 #pragma mark - 章节

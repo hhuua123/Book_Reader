@@ -14,6 +14,7 @@
 @property (nonatomic,copy) NSString* info;
 /* 章节的url*/
 @property (nonatomic,copy) NSString* url;
-
+/* 章节所属书本的book_id*/
+@property (nonatomic,copy) NSString* book_id;
 
 @end

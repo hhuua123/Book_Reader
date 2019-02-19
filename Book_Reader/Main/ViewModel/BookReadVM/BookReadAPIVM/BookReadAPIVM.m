@@ -74,14 +74,14 @@
     /* 去数据库查找是否有本地缓存的章节信息*/
     NSArray* arr = [self.database selectChapterWithSourceUrl:self.model.book_url];
     if (arr.count >= 1){
-        HYDebugLog(@"已有章节缓存");
-        /* 去查找阅读记录*/
+        
+        /* 已有章节缓存,去查找阅读记录*/
         self.chapterArr = [NSArray arrayWithArray:arr];
         [self initialRecord];
         [self loadChaptersWithRecord:NO];
     }else{
-        HYDebugLog(@"没有章节缓存");
-        /* 去加载章节内容*/
+        
+        /* 没有章节缓存,去加载章节内容*/
         [self loadChaptersWithRecord:YES];
     }
     
@@ -271,6 +271,8 @@
         self.currentChapterModel = model;
         self.currentChapterTextModel = chapterText;
         self.currentIndex = [self.chapterArr indexOfObject:self.currentChapterModel];
+        if (self.currentIndex >= self.chapterArr.count)
+            self.currentIndex = 0;
         
         /* 分页*/
         @try {
@@ -343,13 +345,13 @@
         
         UIImage* image = [strongvc.view screenshot];
         UIImage* ne_image = [UIImage imageWithCGImage:image.CGImage scale:image.scale orientation:UIImageOrientationUpMirrored];
-        UIImageView* imageV = [[UIImageView alloc] initWithImage:ne_image];
-        imageV.frame = strongvc.view.bounds;
-        imageV.alpha = 0.5;
         
         if (bvc){
             kdispatch_main_sync_safe(^(){
-               [bvc.view addSubview:imageV];
+                UIImageView* imageV = [[UIImageView alloc] initWithImage:ne_image];
+                imageV.frame = strongvc.view.bounds;
+                imageV.alpha = 0.5;
+                [bvc.view addSubview:imageV];
             });
         }
     });
@@ -482,6 +484,22 @@
 - (BookInfoModel*)getBookInfoModel
 {
     return self.model;
+}
+
+/* 删除当前章节的缓存*/
+- (void)deleteChapterSave
+{
+    if ([self.database deleteChapterTextWithUrl:self.currentChapterTextModel.url]){
+        [self loadBeforeChapterText];
+    }
+}
+
+/* 删除全书章节缓存*/
+- (void)deleteBookChapterSave
+{
+    if ([self.database deleteChapterTextWithBookId:self.model.related_id]){
+        [self loadBeforeChapterText];
+    }
 }
 
 @end

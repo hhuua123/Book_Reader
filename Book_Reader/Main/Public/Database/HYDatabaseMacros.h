@@ -17,14 +17,19 @@
 #define kHYDBCreateChapterTextTable @"CREATE TABLE IF NOT EXISTS t_chapter_text (\
 id INTEGER PRIMARY KEY AUTOINCREMENT,\
 chapter_url TEXT NOT NULL,\
+book_id TEXT NOT NULL,\
 chapter_text TEXT NOT NULL,\
 time DATETIME NOT NULL)"
 
-#define kHYDBInsertChapterText(...) @"INSERT INTO t_chapter_text (chapter_url, chapter_text, time) VALUES (?, ?, ?)",##__VA_ARGS__
+#define kHYDBInsertChapterText(...) @"INSERT INTO t_chapter_text (chapter_url, chapter_text, time, book_id) VALUES (?, ?, ?, ?)",##__VA_ARGS__
 
 #define kHYDBSelectChapterTextWithUrl(url) @"SELECT * FROM t_chapter_text WHERE chapter_url=? LIMIT 1",url
 
 #define kHYDBDeleteChapterTextWithId(chapterId) @"DELETE FROM t_chapter_text WHERE id=?",chapterId
+
+#define kHYDBDeleteChapterTextWithUrl(chapter_url) @"DELETE FROM t_chapter_text WHERE chapter_url=?",chapter_url
+
+#define kHYDBDeleteChapterTextWithBookId(book_id) @"DELETE FROM t_chapter_text WHERE book_id=?",book_id
 
 
 /*-----------------------------------------  t_chapter  ----------------------------------------------------*/

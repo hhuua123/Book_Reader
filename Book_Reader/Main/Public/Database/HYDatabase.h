@@ -38,6 +38,8 @@
 /* 章节内容*/
 - (BOOL)saveChapterTextWithModel:(BookChapterTextModel*)model;
 - (BookChapterTextModel*)selectChapterTextWithUrl:(NSString*)url;
+- (BOOL)deleteChapterTextWithUrl:(NSString*)url;
+- (BOOL)deleteChapterTextWithBookId:(NSString*)bookid;
 
 /* 搜索历史*/
 - (BOOL)saveSearchHistoryWithName:(NSString*)name;

@@ -10,6 +10,7 @@
 #import "HYHTTPSessionManager.h"
 #import "NSError+HYError.h"
 #import "HYDatabase.h"
+#import "HYHigherOrderFunc.h"
 
 NSString * const kSearchBookUrl             = @"http://api.hhuua.top:9000/bookApi/search?";
 NSString * const kSearchBook_AuthorUrl      = @"http://api.hhuua.top:9000/bookApi/author?";
@@ -147,6 +148,7 @@ NSString * const kBookInfoUrl               = @"http://api.hhuua.top:9000/bookAp
         if ([responseObject isKindOfClass:[NSDictionary class]]){
             NSDictionary* dic = (NSDictionary*)responseObject;
             BookChapterTextModel* model = [[BookChapterTextModel alloc] initWithDic:dic];
+            model.book_id = chapter.book_id;
             
             if (success){
                 success(model);
@@ -252,6 +254,10 @@ NSString * const kBookInfoUrl               = @"http://api.hhuua.top:9000/bookAp
     [manager GET:kBookSort_SearchUrl parameters:nil progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         if ([responseObject isKindOfClass:[NSArray class]]){
             NSArray* arr = (NSArray*)responseObject;
+            /* 过滤服务器有时返回的分类类型为空的情况*/
+            arr = kFilter(arr, ^BOOL(NSDictionary* obj) {
+                return !kStringIsEmpty((NSString*)[obj objectForKey:@"book_sort"]);
+            });
             if (success){
                 success(arr);
             }

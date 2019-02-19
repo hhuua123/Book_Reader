@@ -18,6 +18,7 @@
 @property (nonatomic,strong) BookChapterView* chapterView;
 @property (nonatomic,strong) BookSetingView* settingView;
 @property (nonatomic,strong) UIView* brightnessView;
+@property (nonatomic,assign) BOOL isFirstLoad;
 
 @property (nonatomic,strong) UISwipeGestureRecognizer* swipe;
 
@@ -36,6 +37,7 @@
     [self initialSubViewConstraints];
     [self initialData];
     
+    self.isFirstLoad = YES;
 }
 
 - (void)viewDidAppear:(BOOL)animated
@@ -47,14 +49,12 @@
         self.settingView.hidden = YES;
     }
     
+    self.isFirstLoad = NO;
     [super viewDidAppear:animated];
 }
 
 - (void)initialNavi
 {
-    
-//    self.automaticallyAdjustsScrollViewInsets = NO;
-//    self.navigationController.edgesForExtendedLayout = UIRectEdgeNone;
     
     [self.navigationController.navigationBar setShadowImage:[UIImage new]];
     self.navigationController.navigationBar.backgroundColor = UIHexColor(0xf1f1f1);
@@ -127,6 +127,11 @@
     UITapGestureRecognizer* setT = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showSettingView)];
     [setView addGestureRecognizer:setT];
     
+    UITapGestureRecognizer* readT = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showWait)];
+    [readView addGestureRecognizer:readT];
+    
+    UITapGestureRecognizer* backT = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(showBackAlert)];
+    [backView addGestureRecognizer:backT];
 }
 
 - (void)initialSubViews
@@ -216,6 +221,28 @@
 }
 
 #pragma mark - func
+- (void)showWait
+{
+    [MBProgressHUD showSuccess:@"暂未完成" toView:self.view];
+}
+
+- (void)showBackAlert
+{
+    UIAlertController* alert = [UIAlertController alertControllerWithTitle:nil message:@"功能" preferredStyle:UIAlertControllerStyleActionSheet];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"删除当前章节缓存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.viewModel deleteChapterSave];
+    }]];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"删除书本章节缓存" style:UIAlertActionStyleDefault handler:^(UIAlertAction * _Nonnull action) {
+        [self.viewModel deleteBookChapterSave];
+    }]];
+    
+    [alert addAction:[UIAlertAction actionWithTitle:@"取消" style:UIAlertActionStyleCancel handler:nil]];
+    
+    [self presentViewController:alert animated:YES completion:nil];
+}
+
 - (void)doNothing
 {
     
@@ -236,7 +263,7 @@
         [self.viewModel startInit];
     };
     UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:vc];
-    [self pushPresentViewController:navi];
+    [self presentViewController:navi animated:YES completion:nil];
 }
 
 - (void)showMulu
@@ -355,6 +382,7 @@
         
         _pageViewController.delegate = self;
         _pageViewController.dataSource = self;
+        _pageViewController.doubleSided = HYUserDefault.PageTransitionStyle==UIPageViewControllerTransitionStylePageCurl?YES:NO;
         [self.view addSubview:_pageViewController.view];
     }
     return _pageViewController;
