@@ -20,13 +20,12 @@
 @property (nonatomic,strong) UIView* brightnessView;
 @property (nonatomic,assign) BOOL isFirstLoad;
 
-@property (nonatomic,strong) UISwipeGestureRecognizer* swipe;
-
 /* 放置到pageView的上层,用于在滑动模式下让控制器可以响应点击事件*/
 @property (nonnull,strong) UIView* backTapView;
 @end
 
 @implementation BookReadVC
+
 - (void)viewDidLoad
 {
     [super viewDidLoad];
@@ -141,12 +140,9 @@
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:_pageViewController.view];
     
-    UISwipeGestureRecognizer* swipe = [[UISwipeGestureRecognizer alloc] initWithTarget:self action:@selector(doNothing)];
-    self.swipe = swipe;
     UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeNaviBarHidenWithAnimated)];
     
-    _backTapView = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth/3, kScreenHeight/3, kScreenWidth/3, kScreenHeight/3)];
-    [_backTapView addGestureRecognizer:swipe];
+    _backTapView = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth/3, kScreenHeight/3, kScreenWidth/3, kScreenHeight/4)];
     [_backTapView addGestureRecognizer:tap];
     
     _backTapView.userInteractionEnabled = YES;
@@ -316,7 +312,7 @@
         [self setNeedsStatusBarAppearanceUpdate];
         self.navigationController.toolbarHidden = YES;
         
-        _backTapView.frame = CGRectMake(kScreenWidth/3, kScreenHeight/3, kScreenWidth/3, kScreenHeight/3);
+        _backTapView.frame = CGRectMake(kScreenWidth/3, kScreenHeight/3, kScreenWidth/3, kScreenHeight/4);
     }
 }
 

@@ -123,4 +123,38 @@
     return YES;
 }
 
+/**
+ * 生成页面"背面图"
+ */
+- (UIViewController*)backImageV
+{
+    UIViewController* bvc = [[UIViewController alloc] init];
+    bvc.view.backgroundColor = self.view.backgroundColor;
+    bvc.view.alpha = 1;
+    
+    
+    CGRect rect = self.view.bounds;
+    
+    UIGraphicsBeginImageContextWithOptions(rect.size, NO, [UIScreen mainScreen].scale);
+    CGContextRef context = UIGraphicsGetCurrentContext();
+    
+    CGAffineTransform transform = CGAffineTransformMake(-1.0, 0, 0, 1.0, rect.size.width, 0.0);
+    CGContextConcatCTM(context, transform);
+    
+    [self.view.layer renderInContext:UIGraphicsGetCurrentContext()];
+    UIImage *screenshot = UIGraphicsGetImageFromCurrentImageContext();
+    UIGraphicsEndImageContext();
+    UIImageView* imageV = [[UIImageView alloc] initWithImage:screenshot];
+    imageV.frame = self.view.bounds;
+    imageV.alpha = 0.5;
+    [bvc.view addSubview:imageV];
+    
+    return bvc;
+}
+
+- (UIViewController *)backVC
+{
+    return [self backImageV];
+}
+
 @end

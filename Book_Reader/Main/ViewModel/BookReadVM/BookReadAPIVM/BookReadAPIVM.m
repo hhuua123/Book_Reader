@@ -330,35 +330,6 @@
     }
 }
 
-/**
- * 生成页面"背面图"
- */
-- (UIViewController*)backImageVWithVC:(BookReadContentVC*)vc
-{
-    UIViewController* bvc = [[UIViewController alloc] init];
-    bvc.view.backgroundColor = vc.view.backgroundColor;
-    bvc.view.alpha = 1;
-    
-    __weak typeof(vc) weakvc = vc;
-    kDISPATCH_ON_GLOBAL_QUEUE_DEFAULT(^(){
-        __strong typeof(weakvc) strongvc = weakvc;
-        
-        UIImage* image = [strongvc.view screenshot];
-        UIImage* ne_image = [UIImage imageWithCGImage:image.CGImage scale:image.scale orientation:UIImageOrientationUpMirrored];
-        
-        if (bvc){
-            kdispatch_main_sync_safe(^(){
-                UIImageView* imageV = [[UIImageView alloc] initWithImage:ne_image];
-                imageV.frame = strongvc.view.bounds;
-                imageV.alpha = 0.5;
-                [bvc.view addSubview:imageV];
-            });
-        }
-    });
-    
-    return bvc;
-}
-
 #pragma mark - BookReadVMDelegate
 - (NSInteger)getCurrentChapterIndex
 {
@@ -437,7 +408,7 @@
     
     if (doubleSided && [viewController isKindOfClass:[BookReadContentVC class]]){
         self.currentVC = (BookReadContentVC*)viewController;
-        return [self backImageVWithVC:self.currentVC];
+        return self.currentVC.backVC;
     }
     
     if (index - 1 >=0 && index - 1 < self.vcArr.count){
@@ -460,7 +431,7 @@
     
     if (doubleSided && [viewController isKindOfClass:[BookReadContentVC class]]){
         self.currentVC = (BookReadContentVC*)viewController;
-        return [self backImageVWithVC:self.currentVC];
+        return self.currentVC.backVC;
     }
     
     if (index + 1>=0 && index + 1<self.vcArr.count){

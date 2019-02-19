@@ -79,8 +79,8 @@
         }
     }
     
-    if (![self.database columnExists:@"t_chapter_text" inTableWithName:@"book_id"]){
-        NSString* sql = @"alter tabel t_chapter_text add book_id TEXT NOT NULL";
+    if (![self.database columnExists:@"book_id" inTableWithName:@"t_chapter_text"]){
+        NSString* sql = @"alter table t_chapter_text add book_id TEXT";
         BOOL success = [self.database executeUpdate:sql];
         if (!success){
             HYDebugLog(@"add colume 'book_id' for table 't_chapter_text' error:%@",[self.database lastErrorMessage]);

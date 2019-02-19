@@ -25,4 +25,5 @@
                     totalNum:(NSInteger)totalNum
                        index:(NSInteger)index;
 
+@property (nonatomic,strong,readonly) UIViewController* backVC;
 @end
