@@ -15,11 +15,14 @@
 #import "BookSearchListVC.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 
+#define kSearchDelay 0.3
+
 @interface BookSearchVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 /* 搜索"框"*/
 @property (nonatomic,strong) UITextField* searchTextField;
 @property (nonatomic,strong) UIView* searchBackView;
 @property (nonatomic,strong) UIButton* cancleBtn;
+@property (nonatomic,strong) dispatch_source_t search_t;
 /* 搜索热词*/
 @property (nonatomic,strong) BookSearchHotView* hotView;
 @property (nonatomic,strong) UIView* hotTitleView;
@@ -209,13 +212,8 @@
     [self.historyTBV reloadData];
 }
 
-- (void)textFieldChange
+- (void)searchBook
 {
-    self.bookNamesTBV.hidden = self.searchTextField.text.length<1;
-    
-    /* 进行一个函数调用防抖动处理,以避免过于频繁的调用搜索功能*/
-    
-    
     /* 根据输入内容进行相关书名查找*/
     if (!kStringIsEmpty(self.searchTextField.text)){
         self.bookNameArr = [NSArray array];
@@ -232,6 +230,24 @@
             
         }];
     }
+}
+
+- (void)textFieldChange
+{
+    self.bookNamesTBV.hidden = self.searchTextField.text.length<1;
+    
+    /* 进行一个函数调用防抖动处理,以避免过于频繁的调用搜索功能*/
+    if (_search_t){
+        dispatch_source_cancel(_search_t);
+    }
+    
+    _search_t = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+    dispatch_source_set_timer(_search_t, dispatch_time(DISPATCH_TIME_NOW, kSearchDelay * NSEC_PER_SEC), DISPATCH_TIME_FOREVER, 0);
+    dispatch_source_set_event_handler(_search_t, ^{
+        [self searchBook];
+    });
+    
+    dispatch_resume(_search_t);
 }
 
 - (void)deleteAllSearchHistory
