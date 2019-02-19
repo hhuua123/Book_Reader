@@ -76,6 +76,7 @@
     _searchTextField.delegate = self;
     _searchTextField.font = [UIFont systemFontOfSize:14];
     _searchTextField.returnKeyType = UIReturnKeySearch;
+    _searchTextField.clearButtonMode = UITextFieldViewModeWhileEditing;
     _searchTextField.backgroundColor = [UIColor whiteColor];
     [self.searchBackView addSubview:_searchTextField];
     
@@ -211,6 +212,9 @@
 - (void)textFieldChange
 {
     self.bookNamesTBV.hidden = self.searchTextField.text.length<1;
+    
+    /* 进行一个函数调用防抖动处理,以避免过于频繁的调用搜索功能*/
+    
     
     /* 根据输入内容进行相关书名查找*/
     if (!kStringIsEmpty(self.searchTextField.text)){

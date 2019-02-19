@@ -372,9 +372,9 @@
 		522205D320E07A9700210706 /* Macros */ = {
 			isa = PBXGroup;
 			children = (
+				522205D620E07A9700210706 /* HYMacros.h */,
 				522205D420E07A9700210706 /* HYRegulaStrMacro.h */,
 				522205D520E07A9700210706 /* HYNotificationMacros.h */,
-				522205D620E07A9700210706 /* HYMacros.h */,
 			);
 			path = Macros;
 			sourceTree = "<group>";

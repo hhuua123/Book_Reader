@@ -26,17 +26,6 @@
 @end
 
 @implementation BookReadVC
-
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-
-}
-
-- (void)touchesMoved:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    
-}
-
 - (void)viewDidLoad
 {
     [super viewDidLoad];

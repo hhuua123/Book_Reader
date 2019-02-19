@@ -18,10 +18,6 @@
 @end
 
 @implementation HYBaseViewController
-- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
-{
-    
-}
 
 - (instancetype)init
 {

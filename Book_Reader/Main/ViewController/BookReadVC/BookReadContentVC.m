@@ -47,10 +47,10 @@
     [super viewWillAppear:animated];
     
     if (HYUserDefault.isNightStyle){
-        self.view.backgroundColor = UIHexColor(0x171a21);
+        self.view.backgroundColor   = UIHexColor(0x171a21);
         _chapterNameLabel.textColor = UIHexColor(0x576071);
-        _indexLabel.textColor = UIHexColor(0x576071);
-        _timeLabel.textColor = UIHexColor(0x576071);
+        _indexLabel.textColor       = UIHexColor(0x576071);
+        _timeLabel.textColor        = UIHexColor(0x576071);
     }
     
     [self initialData];

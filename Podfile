@@ -5,7 +5,6 @@ use_frameworks!
 pod 'Masonry'
 pod 'IQKeyboardManager'
 pod 'AFNetworking'
-# pod 'SDWebImage'
 pod 'YYWebImage'
 pod 'MJExtension'
 pod 'FMDB'

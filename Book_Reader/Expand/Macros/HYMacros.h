@@ -77,6 +77,22 @@ dispatch_async(dispatch_get_main_queue(), block);\
 #define kWeakSelf(type)  __weak typeof(type) weak##type = type;
 #define kStrongSelf(type)  __strong typeof(type) type = weak##type;
 
+//傻逼刘海屏的判断
+static inline BOOL isIPhoneXSeries() {
+    BOOL iPhoneXSeries = NO;
+    if (UIDevice.currentDevice.userInterfaceIdiom != UIUserInterfaceIdiomPhone) {
+        return iPhoneXSeries;
+    }
+    
+    if (@available(iOS 11.0, *)) {
+        UIWindow *mainWindow = [[[UIApplication sharedApplication] delegate] window];
+        if (mainWindow.safeAreaInsets.bottom > 0.0) {
+            iPhoneXSeries = YES;
+        }
+    }
+    
+    return iPhoneXSeries;
+}
 
 
 #endif /* HYMacros_h */
