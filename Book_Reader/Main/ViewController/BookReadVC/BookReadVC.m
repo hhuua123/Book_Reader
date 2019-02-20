@@ -11,17 +11,16 @@
 #import "BookChapterView.h"
 #import "BookSetingView.h"
 #import "BookSourceListVC.h"
+#import "BookPageVC.h"
 
 @interface BookReadVC ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
-@property (nonatomic,strong) UIPageViewController *pageViewController;
+@property (nonatomic,strong) BookPageVC *pageViewController;
 @property (nonatomic,strong) BarButtonView* nightView;
 @property (nonatomic,strong) BookChapterView* chapterView;
 @property (nonatomic,strong) BookSetingView* settingView;
 @property (nonatomic,strong) UIView* brightnessView;
 @property (nonatomic,assign) BOOL isFirstLoad;
 
-/* 放置到pageView的上层,用于在滑动模式下让控制器可以响应点击事件*/
-@property (nonnull,strong) UIView* backTapView;
 @end
 
 @implementation BookReadVC
@@ -140,15 +139,6 @@
     [self addChildViewController:self.pageViewController];
     [self.view addSubview:_pageViewController.view];
     
-    UITapGestureRecognizer* tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(changeNaviBarHidenWithAnimated)];
-    
-    _backTapView = [[UIView alloc] initWithFrame:CGRectMake(kScreenWidth/3, kScreenHeight/3, kScreenWidth/3, kScreenHeight/4)];
-    [_backTapView addGestureRecognizer:tap];
-    
-    _backTapView.userInteractionEnabled = YES;
-    _backTapView.backgroundColor = [UIColor clearColor];
-    [self.view insertSubview:_backTapView atIndex:1];
-    
     self.chapterView = [[BookChapterView alloc] initWithFrame:CGRectMake(0, 0, 0, kScreenHeight)];
     kWeakSelf(self);
     self.chapterView.didSelectChapter = ^(NSInteger index) {
@@ -239,11 +229,6 @@
     [self presentViewController:alert animated:YES completion:nil];
 }
 
-- (void)doNothing
-{
-    
-}
-
 - (void)naviLeftBarItemClick
 {
     if (![self.navigationController popViewControllerAnimated:YES]){
@@ -305,14 +290,10 @@
         [self.navigationController setNavigationBarHidden:NO animated:NO];
         [self setNeedsStatusBarAppearanceUpdate];
         self.navigationController.toolbarHidden = NO;
-
-        _backTapView.frame = CGRectMake(0, 0, kScreenWidth, kScreenHeight);
     }else{
         [self.navigationController setNavigationBarHidden:YES animated:NO];
         [self setNeedsStatusBarAppearanceUpdate];
         self.navigationController.toolbarHidden = YES;
-        
-        _backTapView.frame = CGRectMake(kScreenWidth/3, kScreenHeight/3, kScreenWidth/3, kScreenHeight/4);
     }
 }
 
@@ -331,9 +312,13 @@
     NSArray *viewControllers = [NSArray arrayWithObject:currentVC];
     
     [_pageViewController.view removeFromSuperview];
-    _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:HYUserDefault.PageTransitionStyle navigationOrientation:HYUserDefault.PageNaviOrientation options:nil];
+    _pageViewController = [[BookPageVC alloc] initWithTransitionStyle:HYUserDefault.PageTransitionStyle navigationOrientation:HYUserDefault.PageNaviOrientation options:nil];
     
-    
+    kWeakSelf(self);
+    _pageViewController.block = ^{
+        kStrongSelf(self);
+        [self changeNaviBarHidenWithAnimated];
+    };
     _pageViewController.delegate = self;
     _pageViewController.dataSource = self;
     /* 通过双面显示,解决UIPageViewController仿真翻页时背面发白的问题*/
@@ -374,8 +359,13 @@
 -(UIPageViewController *)pageViewController
 {
     if (!_pageViewController) {
-        _pageViewController = [[UIPageViewController alloc] initWithTransitionStyle:HYUserDefault.PageTransitionStyle navigationOrientation:HYUserDefault.PageNaviOrientation options:nil];
+        _pageViewController = [[BookPageVC alloc] initWithTransitionStyle:HYUserDefault.PageTransitionStyle navigationOrientation:HYUserDefault.PageNaviOrientation options:nil];
         
+        kWeakSelf(self);
+        _pageViewController.block = ^{
+            kStrongSelf(self);
+            [self changeNaviBarHidenWithAnimated];
+        };
         _pageViewController.delegate = self;
         _pageViewController.dataSource = self;
         _pageViewController.doubleSided = HYUserDefault.PageTransitionStyle==UIPageViewControllerTransitionStylePageCurl?YES:NO;

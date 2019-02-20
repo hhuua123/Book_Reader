@@ -406,6 +406,7 @@
 {
     NSInteger index = [self.vcArr indexOfObject:self.currentVC];
     
+    /* 返回背面*/
     if (doubleSided && [viewController isKindOfClass:[BookReadContentVC class]]){
         self.currentVC = (BookReadContentVC*)viewController;
         return self.currentVC.backVC;
@@ -429,6 +430,7 @@
 {
     NSInteger index = [self.vcArr indexOfObject:self.currentVC];
     
+    /* 返回背面*/
     if (doubleSided && [viewController isKindOfClass:[BookReadContentVC class]]){
         self.currentVC = (BookReadContentVC*)viewController;
         return self.currentVC.backVC;

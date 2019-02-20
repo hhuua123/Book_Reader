@@ -77,6 +77,7 @@
 		52C41F6D2101861D006B9BFC /* BookSortVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C41F6C2101861D006B9BFC /* BookSortVC.m */; };
 		52C41F7221057A9E006B9BFC /* BookSourceListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C41F7121057A9E006B9BFC /* BookSourceListVC.m */; };
 		52ED7F5821353A6E004E261E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 52ED7F5721353A6E004E261E /* README.md */; };
+		BD6B7FA1221D225F000E5C19 /* BookPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6B7FA0221D225F000E5C19 /* BookPageVC.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -217,6 +218,8 @@
 		65C31F6E3860E4E6E415D324 /* Pods_Book_Reader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Book_Reader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8CFB40E5483280BF711661 /* Pods-Book_Reader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Book_Reader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Book_Reader/Pods-Book_Reader.debug.xcconfig"; sourceTree = "<group>"; };
 		BD6B7F8F221BF5BF000E5C19 /* HYHigherOrderFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYHigherOrderFunc.h; sourceTree = "<group>"; };
+		BD6B7F9F221D225F000E5C19 /* BookPageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookPageVC.h; sourceTree = "<group>"; };
+		BD6B7FA0221D225F000E5C19 /* BookPageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookPageVC.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -564,6 +567,7 @@
 		5222063A20E1DC2500210706 /* BookReadVC */ = {
 			isa = PBXGroup;
 			children = (
+				BD6B7F9D221D2232000E5C19 /* PageVC */,
 				5222063B20E1DC4800210706 /* BookReadVC.h */,
 				5222063C20E1DC4800210706 /* BookReadVC.m */,
 				5222065320E2134D00210706 /* BookReadContentVC.h */,
@@ -742,6 +746,15 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		BD6B7F9D221D2232000E5C19 /* PageVC */ = {
+			isa = PBXGroup;
+			children = (
+				BD6B7F9F221D225F000E5C19 /* BookPageVC.h */,
+				BD6B7FA0221D225F000E5C19 /* BookPageVC.m */,
+			);
+			path = PageVC;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -906,6 +919,7 @@
 				522206A320EB21AD00210706 /* BookSaveInfoModel.m in Sources */,
 				522206B720EB427200210706 /* MainBookRightCell.m in Sources */,
 				5222064520E1DED900210706 /* BookReadAPIVM.m in Sources */,
+				BD6B7FA1221D225F000E5C19 /* BookPageVC.m in Sources */,
 				522205DF20E07A9700210706 /* MBProgressHUD+NJ.m in Sources */,
 				5222066220E23F7A00210706 /* BookRecordModel+database.m in Sources */,
 				522205DE20E07A9700210706 /* GVUserDefaults+HYUserDefaults.m in Sources */,

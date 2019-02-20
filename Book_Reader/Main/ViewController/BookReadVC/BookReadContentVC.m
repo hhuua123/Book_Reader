@@ -130,11 +130,8 @@
 {
     UIViewController* bvc = [[UIViewController alloc] init];
     bvc.view.backgroundColor = self.view.backgroundColor;
-    bvc.view.alpha = 1;
-    
-    
+
     CGRect rect = self.view.bounds;
-    
     UIGraphicsBeginImageContextWithOptions(rect.size, NO, [UIScreen mainScreen].scale);
     CGContextRef context = UIGraphicsGetCurrentContext();
     
