@@ -19,6 +19,12 @@
 
 @implementation BookReadContentVC
 
+- (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
+{
+    if (HYUserDefault.PageTransitionStyle==UIPageViewControllerTransitionStyleScroll)
+        [[NSNotificationCenter defaultCenter] postNotificationName:kNotifyReadContentTouchEnd object:nil];
+}
+
 - (instancetype)initWithText:(NSString*)text
                  chapterName:(NSString*)chapterName
                     totalNum:(NSInteger)totalNum

@@ -11,4 +11,7 @@
 #define kNotifyAppDidBecomeActive @"HYNotify_applicationDidBecomeActive"
 #define kNotifyAppDidEnterBackground @"HYNotify_applicationDidEnterBackground"
 
+#define kNotifyReadContentTouchEnd @"HYNotifyReadContentTouchEnd"
+#define kNotifyReadChangeBookSource @"HYReadChangeBookSource"
+
 #endif /* TWNotificationMacros_h */

@@ -404,7 +404,17 @@
 /* 获取前一个界面*/
 - (UIViewController*)viewControllerBeforeViewController:(UIViewController *)viewController DoubleSided:(BOOL)doubleSided
 {
-    NSInteger index = [self.vcArr indexOfObject:self.currentVC];
+    /* UIPageViewController在UIPageViewControllerTransitionStyleScroll模式下,会连续向前/向后请求两次
+       目前的方法只能是通过标记暂时解决一下这个问题,
+     */
+    static NSInteger scrollTimes;
+    
+    NSInteger index;
+    if (doubleSided){
+        index = [self.vcArr indexOfObject:self.currentVC];
+        scrollTimes = 0;
+    }else
+        index = [self.vcArr indexOfObject:viewController];
     
     /* 返回背面*/
     if (doubleSided && [viewController isKindOfClass:[BookReadContentVC class]]){
@@ -420,6 +430,19 @@
 
         return self.currentVC;
     }
+    if (!doubleSided && index==0){
+        if (scrollTimes > 0)
+            [self loadBeforeChapterText];
+        else{
+            BookReadContentVC* lv = self.vcArr.firstObject;
+            BookReadContentVC* newV = [[BookReadContentVC alloc] initWithText:lv.text chapterName:lv.chapterName totalNum:lv.totalNum index:lv.index];
+            return newV;
+            
+        }
+        
+        scrollTimes = 1;
+        return nil;
+    }
     /* 网络加载*/
     [self loadBeforeChapterText];
     return nil;
@@ -428,7 +451,15 @@
 /* 获取后一界面*/
 - (UIViewController*)viewControllerAfterViewController:(UIViewController *)viewController DoubleSided:(BOOL)doubleSided
 {
-    NSInteger index = [self.vcArr indexOfObject:self.currentVC];
+    static NSInteger scrollTimes;
+    
+    NSInteger index;
+    if (doubleSided){
+        index = [self.vcArr indexOfObject:self.currentVC];
+        scrollTimes = 0;
+    }
+    else
+        index = [self.vcArr indexOfObject:viewController];
     
     /* 返回背面*/
     if (doubleSided && [viewController isKindOfClass:[BookReadContentVC class]]){
@@ -443,6 +474,20 @@
         self.currentVC = self.vcArr[index + 1];
         
         return self.currentVC;
+    }
+    
+    if (!doubleSided && index==self.vcArr.count - 1){
+        if (scrollTimes > 0)
+            [self loadBeforeChapterText];
+        else{
+            BookReadContentVC* lv = self.vcArr.lastObject;
+            BookReadContentVC* newV = [[BookReadContentVC alloc] initWithText:lv.text chapterName:lv.chapterName totalNum:lv.totalNum index:lv.index];
+            return newV;
+            
+        }
+        
+        scrollTimes = 1;
+        return nil;
     }
     /* 网络加载*/
     [self loadNextChapterText];

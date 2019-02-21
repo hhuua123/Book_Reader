@@ -166,6 +166,8 @@
     self.brightnessView.userInteractionEnabled = NO;
     self.brightnessView.backgroundColor = [UIColor colorWithRed:0 green:0 blue:0 alpha:HYUserDefault.readBrightness];
     [self.view addSubview:self.brightnessView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(changeNaviBarHidenWithAnimated) name:kNotifyReadContentTouchEnd object:nil];
 }
 
 - (void)initialData

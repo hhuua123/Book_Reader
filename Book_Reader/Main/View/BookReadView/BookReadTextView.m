@@ -43,7 +43,7 @@
         [dic setObject:UIHexColor(0x576071) forKey:NSForegroundColorAttributeName];
     }
     
-    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:self.text attributes:dic];
+    NSMutableAttributedString *attrString = [[NSMutableAttributedString alloc] initWithString:self.text?:@"" attributes:dic];
     
     CTFramesetterRef frameSetter = CTFramesetterCreateWithAttributedString((CFAttributedStringRef)attrString);
     CGPathRef path = CGPathCreateWithRect(CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height), NULL);

@@ -15,7 +15,7 @@
 #import "BookSearchListVC.h"
 #import <IQKeyboardManager/IQKeyboardManager.h>
 
-#define kSearchDelay 0.3
+#define kSearchDelay 0.05
 
 @interface BookSearchVC ()<UITableViewDelegate,UITableViewDataSource,UITextFieldDelegate>
 /* 搜索"框"*/
@@ -286,6 +286,7 @@
 - (BOOL)textFieldShouldReturn:(UITextField *)textField
 {
     if (!kStringIsEmpty(textField.text)){
+        [self.database saveSearchHistoryWithName:textField.text];
         [self pushToBookListVCWithKeyWord:textField.text];
         return YES;
     }
