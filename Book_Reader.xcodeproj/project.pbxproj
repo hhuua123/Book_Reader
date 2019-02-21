@@ -77,6 +77,7 @@
 		52C41F6D2101861D006B9BFC /* BookSortVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C41F6C2101861D006B9BFC /* BookSortVC.m */; };
 		52C41F7221057A9E006B9BFC /* BookSourceListVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C41F7121057A9E006B9BFC /* BookSourceListVC.m */; };
 		52ED7F5821353A6E004E261E /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 52ED7F5721353A6E004E261E /* README.md */; };
+		BD0235EB221E996600B9E10F /* BookReadContentModel.m in Sources */ = {isa = PBXBuildFile; fileRef = BD0235EA221E996600B9E10F /* BookReadContentModel.m */; };
 		BD6B7FA1221D225F000E5C19 /* BookPageVC.m in Sources */ = {isa = PBXBuildFile; fileRef = BD6B7FA0221D225F000E5C19 /* BookPageVC.m */; };
 /* End PBXBuildFile section */
 
@@ -217,6 +218,8 @@
 		52ED7F5721353A6E004E261E /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 		65C31F6E3860E4E6E415D324 /* Pods_Book_Reader.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Book_Reader.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		7B8CFB40E5483280BF711661 /* Pods-Book_Reader.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Book_Reader.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Book_Reader/Pods-Book_Reader.debug.xcconfig"; sourceTree = "<group>"; };
+		BD0235E9221E996600B9E10F /* BookReadContentModel.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookReadContentModel.h; sourceTree = "<group>"; };
+		BD0235EA221E996600B9E10F /* BookReadContentModel.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookReadContentModel.m; sourceTree = "<group>"; };
 		BD6B7F8F221BF5BF000E5C19 /* HYHigherOrderFunc.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HYHigherOrderFunc.h; sourceTree = "<group>"; };
 		BD6B7F9F221D225F000E5C19 /* BookPageVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookPageVC.h; sourceTree = "<group>"; };
 		BD6B7FA0221D225F000E5C19 /* BookPageVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookPageVC.m; sourceTree = "<group>"; };
@@ -409,6 +412,8 @@
 			isa = PBXGroup;
 			children = (
 				5222060F20E0BEAE00210706 /* BookAPIModel */,
+				BD0235E9221E996600B9E10F /* BookReadContentModel.h */,
+				BD0235EA221E996600B9E10F /* BookReadContentModel.m */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -940,6 +945,7 @@
 				522205C620E07A9200210706 /* GVUserDefaults.m in Sources */,
 				522206AF20EB289C00210706 /* MainBookInfoCell.m in Sources */,
 				522205C720E07A9200210706 /* UIPlaceHolderTextView.m in Sources */,
+				BD0235EB221E996600B9E10F /* BookReadContentModel.m in Sources */,
 				5222063720E1CF3000210706 /* HYPresentPushAnimation.m in Sources */,
 				522206B320EB3F1D00210706 /* MainBookRightVC.m in Sources */,
 				5222069F20E6896900210706 /* BookInfoVC.m in Sources */,
