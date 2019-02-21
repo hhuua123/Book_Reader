@@ -11,8 +11,8 @@
 #import "BookSearchVC.h"
 #import "BookSortVC.h"
 #import "HYBookAPIs.h"
-#import "BookReadAPIVM.h"
-#import "BookReadVC.h"
+#import "BookReadAPIVM_old.h"
+#import "BookReadVC_old.h"
 
 @interface MainBookRightVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView* tableView;
@@ -111,8 +111,8 @@
         [self.bookApi randomSearchBookInfoWithSuccess:^(BookInfoModel *book) {
             [MBProgressHUD hideHUDForView:self.view];
             
-            BookReadAPIVM* vm = [[BookReadAPIVM alloc] initWithBookModel:book];
-            BookReadVC* vc = [[BookReadVC alloc] init];
+            BookReadAPIVM_old* vm = [[BookReadAPIVM_old alloc] initWithBookModel:book];
+            BookReadVC_old* vc = [[BookReadVC_old alloc] init];
             vc.viewModel = vm;
             
             UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:vc];

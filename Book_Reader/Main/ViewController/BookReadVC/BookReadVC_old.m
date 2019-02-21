@@ -1,19 +1,19 @@
 //
-//  BookReadVC.m
+//  BookReadVC_old.m
 //  Book_Reader
 //
 //  Created by hhuua on 2018/6/26.
 //  Copyright © 2018年 hhuua. All rights reserved.
 //
 
-#import "BookReadVC.h"
+#import "BookReadVC_old.h"
 #import "BarButtonView.h"
 #import "BookChapterView.h"
 #import "BookSetingView.h"
 #import "BookSourceListVC.h"
 #import "BookPageVC.h"
 
-@interface BookReadVC ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
+@interface BookReadVC_old ()<UIPageViewControllerDelegate,UIPageViewControllerDataSource>
 @property (nonatomic,strong) BookPageVC *pageViewController;
 @property (nonatomic,strong) BarButtonView* nightView;
 @property (nonatomic,strong) BookChapterView* chapterView;
@@ -23,7 +23,7 @@
 
 @end
 
-@implementation BookReadVC
+@implementation BookReadVC_old
 
 - (void)viewDidLoad
 {
@@ -136,8 +136,8 @@
 {
     self.view.backgroundColor = HYUserDefault.readBackColor?:UIHexColor(0xa39e8b);
     
-    [self addChildViewController:self.pageViewController];
-    [self.view addSubview:_pageViewController.view];
+//    [self addChildViewController:self.pageViewController];
+//    [self.view addSubview:_pageViewController.view];
     
     self.chapterView = [[BookChapterView alloc] initWithFrame:CGRectMake(0, 0, 0, kScreenHeight)];
     kWeakSelf(self);
@@ -331,7 +331,7 @@
     
     [self.pageViewController setViewControllers:viewControllers
                                       direction:UIPageViewControllerNavigationDirectionReverse
-                                       animated:NO
+                                       animated:YES
                                      completion:nil];
     
     [self.view insertSubview:_pageViewController.view atIndex:0];

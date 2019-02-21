@@ -10,8 +10,8 @@
 #import "MainBookInfoCell.h"
 #import "UIImage+Color.h"
 #import "HYDatabase.h"
-#import "BookReadAPIVM.h"
-#import "BookReadVC.h"
+#import "BookReadAPIVM_old.h"
+#import "BookReadVC_old.h"
 #import <MMDrawerController/UIViewController+MMDrawerController.h>
 #import "HYBookAPIs.h"
 #import "BookInfoVC.h"
@@ -134,8 +134,8 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath
 {
     BookSaveInfoModel* model = self.dataArray[indexPath.row];
-    BookReadAPIVM* vm = [[BookReadAPIVM alloc] initWithBookModel:model.bookInfo];
-    BookReadVC* vc = [[BookReadVC alloc] init];
+    BookReadAPIVM_old* vm = [[BookReadAPIVM_old alloc] initWithBookModel:model.bookInfo];
+    BookReadVC_old* vc = [[BookReadVC_old alloc] init];
     vc.viewModel = vm;
     
     UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:vc];

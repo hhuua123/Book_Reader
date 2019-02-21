@@ -7,10 +7,13 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "BookChapterModel.h"
 
 NS_ASSUME_NONNULL_BEGIN
 
 @interface BookReadContentModel : NSObject
+
+@property (nonatomic,strong) BookChapterModel* chapterModel;
 
 /* 该"页"需要显示的文本内容*/
 @property (nonatomic,copy) NSString* text;

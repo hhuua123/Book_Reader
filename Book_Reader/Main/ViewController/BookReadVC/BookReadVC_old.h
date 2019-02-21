@@ -1,5 +1,5 @@
 //
-//  BookReadVC.h
+//  BookReadVC_old.h
 //  Book_Reader
 //
 //  Created by hhuua on 2018/6/26.
@@ -11,7 +11,7 @@
 #import "BookReadVMDelegate.h"
 
 /* 阅读界面*/
-@interface BookReadVC : UIViewController
+@interface BookReadVC_old : UIViewController
 /* ViewModel*/
 @property (nonatomic,strong) id<BookReadVMDelegate> viewModel;
 

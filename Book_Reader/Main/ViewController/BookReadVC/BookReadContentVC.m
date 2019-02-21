@@ -25,6 +25,19 @@
         [[NSNotificationCenter defaultCenter] postNotificationName:kNotifyReadContentTouchEnd object:nil];
 }
 
+- (instancetype)initWithModel:(BookReadContentModel*)model
+{
+    self = [self init];
+    if (self){
+        self.model          = model;
+        self.text           = model.text;
+        self.chapterName    = model.chapterName;
+        self.totalNum       = model.totalNum;
+        self.index          = model.index;
+    }
+    return self;
+}
+
 - (instancetype)initWithText:(NSString*)text
                  chapterName:(NSString*)chapterName
                     totalNum:(NSInteger)totalNum

@@ -9,8 +9,8 @@
 #import "BookInfoVC.h"
 #import "UIImage+Color.h"
 #import "BookInfoModel.h"
-#import "BookReadVC.h"
-#import "BookReadAPIVM.h"
+#import "BookReadVC_old.h"
+#import "BookReadAPIVM_old.h"
 #import "HYDatabase.h"
 #import "HYBookAPIs.h"
 #import "BookSearchListVC.h"
@@ -136,8 +136,8 @@
 /* 开始阅读按钮被点击*/
 - (IBAction)startReadClick:(UIButton *)sender
 {
-    BookReadAPIVM* vm = [[BookReadAPIVM alloc] initWithBookModel:self.model];
-    BookReadVC* vc = [[BookReadVC alloc] init];
+    BookReadAPIVM_old* vm = [[BookReadAPIVM_old alloc] initWithBookModel:self.model];
+    BookReadVC_old* vc = [[BookReadVC_old alloc] init];
     vc.viewModel = vm;
     
     UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:vc];
