@@ -7,8 +7,12 @@
 //
 
 #import "MBProgressHUD+NJ.h"
+#import <objc/runtime.h>
+
 #define CHINESE_FONT_NAME  @"Heiti SC"
 #define CHINESE_SYSTEM(x) [UIFont fontWithName:CHINESE_FONT_NAME size:x]
+
+static dispatch_source_t show_t;
 @implementation MBProgressHUD (NJ)
 
 /**
@@ -119,6 +123,24 @@
     return [self showMessage:message toView:nil];
 }
 
++ (void)showMessage:(NSString *)message delay:(NSTimeInterval)time
+{
+    UIView* view = [UIApplication sharedApplication].keyWindow;
+    [self showMessage:message toView:view delay:time];
+}
+
++ (void)showMessage:(NSString *)message toView:(UIView *)view delay:(NSTimeInterval)time
+{
+    if (view.show_mbp_t)
+        dispatch_source_cancel(view.show_mbp_t);
+    
+    view.show_mbp_t = dispatch_source_create(DISPATCH_SOURCE_TYPE_TIMER, 0, 0, dispatch_get_main_queue());
+    dispatch_source_set_timer(view.show_mbp_t, dispatch_time(DISPATCH_TIME_NOW, time * NSEC_PER_SEC), DISPATCH_TIME_FOREVER, 0);
+    dispatch_source_set_event_handler(view.show_mbp_t, ^{
+        [self showMessage:message toView:view];
+    });
+}
+
 /**
  *  显示一些信息
  *
@@ -162,7 +184,26 @@
 + (void)hideHUDForView:(UIView *)view
 {
     if (view == nil) view = [UIApplication sharedApplication].keyWindow;
+    
+    if (view.show_mbp_t)
+        dispatch_source_cancel(view.show_mbp_t);
+    
     [self hideHUDForView:view animated:YES];
+}
+
+@end
+
+@implementation UIView(MBP)
+static char* ShowMbpT = "UIViewShowMbpT";
+
+- (void)setShow_mbp_t:(dispatch_source_t)show_mbp_t
+{
+    objc_setAssociatedObject(self, ShowMbpT, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+}
+
+- (dispatch_source_t)show_mbp_t
+{
+    return objc_getAssociatedObject(self, ShowMbpT);
 }
 
 @end

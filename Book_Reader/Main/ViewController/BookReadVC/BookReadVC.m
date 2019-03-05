@@ -187,7 +187,7 @@
     [self.viewModel startLoadData:^{
         kStrongSelf(self);
         [MBProgressHUD hideHUDForView:self.view];
-        [MBProgressHUD showMessage:@"加载中" toView:self.view];
+        [MBProgressHUD showMessage:@"加载中" toView:self.view delay:0.15];
     }];
     
     /* 用于ViewModel反向通知VC显示提示框*/

@@ -13,6 +13,7 @@
 #import "HYBookAPIs.h"
 #import "BookReadAPIVM.h"
 #import "BookReadVC.h"
+#import "UnsplashImageVC.h"
 
 @interface MainBookRightVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) UITableView* tableView;
@@ -61,7 +62,7 @@
 #pragma mark - UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section
 {
-    return 4;
+    return 5;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath
@@ -80,6 +81,9 @@
             break;
         case 3:
             [cell changeBackColor:UIHexColor(0x679f37) Image:kGetImage(@"main_random") Name:@"随机看书"];
+            break;
+        case 4:
+            [cell changeBackColor:UIHexColor(0xff0035) Image:kGetImage(@"main_unsplash ") Name:@"unsplash"];
             break;
         default:
             break;
@@ -122,6 +126,10 @@
             [MBProgressHUD hideHUDForView:self.view];
             [MBProgressHUD showError:@"没找到书~再试一下" toView:self.view];
         }];
+    }else if (indexPath.row==4){
+        UnsplashImageVC* vc = [[UnsplashImageVC alloc] init];
+        UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:vc];
+        [self pushPresentViewController:navi];
     }
     
 }

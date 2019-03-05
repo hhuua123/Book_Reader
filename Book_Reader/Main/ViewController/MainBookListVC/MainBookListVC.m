@@ -15,6 +15,7 @@
 #import <MMDrawerController/UIViewController+MMDrawerController.h>
 #import "HYBookAPIs.h"
 #import "BookInfoVC.h"
+#import <AFNetworking/AFNetworking.h>
 
 @interface MainBookListVC ()<UITableViewDelegate,UITableViewDataSource>
 @property (nonatomic,strong) HYDatabase* database;

@@ -12,6 +12,7 @@
 #import "MainBookRightVC.h"
 #import <MMDrawerController/MMDrawerController.h>
 #import <MMDrawerController/UIViewController+MMDrawerController.h>
+#import "UnsplashImageVC.h"
 
 @interface HYAppDelegate ()
 
@@ -21,16 +22,24 @@
     
     UINavigationController *navi  = [[UINavigationController alloc] initWithRootViewController:[[MainBookListVC alloc] init]];
     MainBookRightVC* rightVC = [[MainBookRightVC alloc] init];
-    
+
     MMDrawerController* drawerController = [[MMDrawerController alloc] initWithCenterViewController:navi rightDrawerViewController:rightVC];
     drawerController.maximumRightDrawerWidth = kScreenWidth * 0.8;
     drawerController.closeDrawerGestureModeMask = MMCloseDrawerGestureModeAll;
-    
+
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.rootViewController = drawerController;
     [self.window makeKeyAndVisible];
-    
+
     [self configureBoardManager];
+    return YES;
+    
+//    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+//    UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:[[UnsplashImageVC alloc] init]];
+//    self.window.rootViewController = navi;
+//
+//    [self.window makeKeyAndVisible];
+    
     return YES;
 }
 

@@ -8,6 +8,12 @@
 
 #import "MBProgressHUD.h"
 
+@interface UIView (MBP)
+
+@property (nonatomic,strong) dispatch_source_t show_mbp_t;
+
+@end
+
 @interface MBProgressHUD (NJ)
 
 + (void)showSuccess:(NSString *)success;
@@ -17,8 +23,9 @@
 + (void)showError:(NSString *)error toView:(UIView *)view;
 
 + (MBProgressHUD *)showMessage:(NSString *)message;
++ (void)showMessage:(NSString *)message delay:(NSTimeInterval)time;
 + (MBProgressHUD *)showMessage:(NSString *)message toView:(UIView *)view;
-
++ (void)showMessage:(NSString *)message toView:(UIView *)view delay:(NSTimeInterval)time;
 + (MBProgressHUD *)showMessage:(NSString *)message toView:(UIView *)view hideAfter:(float)hideTime;
 
 + (void)hideHUD;
