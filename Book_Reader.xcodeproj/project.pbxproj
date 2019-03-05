@@ -36,8 +36,8 @@
 		5222063720E1CF3000210706 /* HYPresentPushAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5222063320E1CF3000210706 /* HYPresentPushAnimation.m */; };
 		5222063820E1CF3000210706 /* HYDismissPopAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = 5222063420E1CF3000210706 /* HYDismissPopAnimation.m */; };
 		5222063920E1CF3000210706 /* HYSwipeInteractiveTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = 5222063520E1CF3000210706 /* HYSwipeInteractiveTransition.m */; };
-		5222063D20E1DC4800210706 /* BookReadVC_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 5222063C20E1DC4800210706 /* BookReadVC_old.m */; };
-		5222064520E1DED900210706 /* BookReadAPIVM_old.m in Sources */ = {isa = PBXBuildFile; fileRef = 5222064420E1DED900210706 /* BookReadAPIVM_old.m */; };
+		5222063D20E1DC4800210706 /* BookReadVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5222063C20E1DC4800210706 /* BookReadVC.m */; };
+		5222064520E1DED900210706 /* BookReadAPIVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 5222064420E1DED900210706 /* BookReadAPIVM.m */; };
 		5222064820E1DF8B00210706 /* BookReadLocalVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 5222064720E1DF8B00210706 /* BookReadLocalVM.m */; };
 		5222064F20E2123200210706 /* BookReadTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = 5222064E20E2123200210706 /* BookReadTextView.m */; };
 		5222065520E2134D00210706 /* BookReadContentVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 5222065420E2134D00210706 /* BookReadContentVC.m */; };
@@ -71,7 +71,6 @@
 		522206B320EB3F1D00210706 /* MainBookRightVC.m in Sources */ = {isa = PBXBuildFile; fileRef = 522206B220EB3F1D00210706 /* MainBookRightVC.m */; };
 		522206B720EB427200210706 /* MainBookRightCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 522206B520EB427200210706 /* MainBookRightCell.m */; };
 		522206B820EB427200210706 /* MainBookRightCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 522206B620EB427200210706 /* MainBookRightCell.xib */; };
-		52613B43221ECADB00A911AD /* BookReadAPIVM.m in Sources */ = {isa = PBXBuildFile; fileRef = 52613B42221ECADB00A911AD /* BookReadAPIVM.m */; };
 		528A19092106C1BA0015442C /* UIView+Screenshot.m in Sources */ = {isa = PBXBuildFile; fileRef = 528A19082106C1BA0015442C /* UIView+Screenshot.m */; };
 		52B8640D210AC13B00F26571 /* .gitignore in Resources */ = {isa = PBXBuildFile; fileRef = 52B8640C210AC13B00F26571 /* .gitignore */; };
 		52C41F6921008C97006B9BFC /* BooksourceModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 52C41F6821008C97006B9BFC /* BooksourceModel.m */; };
@@ -150,11 +149,11 @@
 		5222063420E1CF3000210706 /* HYDismissPopAnimation.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYDismissPopAnimation.m; sourceTree = "<group>"; };
 		5222063520E1CF3000210706 /* HYSwipeInteractiveTransition.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYSwipeInteractiveTransition.m; sourceTree = "<group>"; };
 		5222063620E1CF3000210706 /* HYPresentPushAnimation.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYPresentPushAnimation.h; sourceTree = "<group>"; };
-		5222063B20E1DC4800210706 /* BookReadVC_old.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookReadVC_old.h; sourceTree = "<group>"; };
-		5222063C20E1DC4800210706 /* BookReadVC_old.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookReadVC_old.m; sourceTree = "<group>"; };
+		5222063B20E1DC4800210706 /* BookReadVC.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookReadVC.h; sourceTree = "<group>"; };
+		5222063C20E1DC4800210706 /* BookReadVC.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookReadVC.m; sourceTree = "<group>"; };
 		5222064020E1DC9E00210706 /* BookReadVMDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookReadVMDelegate.h; sourceTree = "<group>"; };
-		5222064320E1DED900210706 /* BookReadAPIVM_old.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookReadAPIVM_old.h; sourceTree = "<group>"; };
-		5222064420E1DED900210706 /* BookReadAPIVM_old.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookReadAPIVM_old.m; sourceTree = "<group>"; };
+		5222064320E1DED900210706 /* BookReadAPIVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookReadAPIVM.h; sourceTree = "<group>"; };
+		5222064420E1DED900210706 /* BookReadAPIVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookReadAPIVM.m; sourceTree = "<group>"; };
 		5222064620E1DF8B00210706 /* BookReadLocalVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookReadLocalVM.h; sourceTree = "<group>"; };
 		5222064720E1DF8B00210706 /* BookReadLocalVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookReadLocalVM.m; sourceTree = "<group>"; };
 		5222064D20E2123200210706 /* BookReadTextView.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookReadTextView.h; sourceTree = "<group>"; };
@@ -215,8 +214,6 @@
 		522206B420EB427200210706 /* MainBookRightCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainBookRightCell.h; sourceTree = "<group>"; };
 		522206B520EB427200210706 /* MainBookRightCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainBookRightCell.m; sourceTree = "<group>"; };
 		522206B620EB427200210706 /* MainBookRightCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = MainBookRightCell.xib; sourceTree = "<group>"; };
-		52613B41221ECADB00A911AD /* BookReadAPIVM.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BookReadAPIVM.h; sourceTree = "<group>"; };
-		52613B42221ECADB00A911AD /* BookReadAPIVM.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BookReadAPIVM.m; sourceTree = "<group>"; };
 		528A19072106C1BA0015442C /* UIView+Screenshot.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIView+Screenshot.h"; sourceTree = "<group>"; };
 		528A19082106C1BA0015442C /* UIView+Screenshot.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIView+Screenshot.m"; sourceTree = "<group>"; };
 		52B8640C210AC13B00F26571 /* .gitignore */ = {isa = PBXFileReference; lastKnownFileType = text; path = .gitignore; sourceTree = "<group>"; };
@@ -604,8 +601,8 @@
 			isa = PBXGroup;
 			children = (
 				BD6B7F9D221D2232000E5C19 /* PageVC */,
-				5222063B20E1DC4800210706 /* BookReadVC_old.h */,
-				5222063C20E1DC4800210706 /* BookReadVC_old.m */,
+				5222063B20E1DC4800210706 /* BookReadVC.h */,
+				5222063C20E1DC4800210706 /* BookReadVC.m */,
 				5222065320E2134D00210706 /* BookReadContentVC.h */,
 				5222065420E2134D00210706 /* BookReadContentVC.m */,
 			);
@@ -625,10 +622,8 @@
 		5222064120E1DDC100210706 /* BookReadAPIVM */ = {
 			isa = PBXGroup;
 			children = (
-				5222064320E1DED900210706 /* BookReadAPIVM_old.h */,
-				5222064420E1DED900210706 /* BookReadAPIVM_old.m */,
-				52613B41221ECADB00A911AD /* BookReadAPIVM.h */,
-				52613B42221ECADB00A911AD /* BookReadAPIVM.m */,
+				5222064320E1DED900210706 /* BookReadAPIVM.h */,
+				5222064420E1DED900210706 /* BookReadAPIVM.m */,
 			);
 			path = BookReadAPIVM;
 			sourceTree = "<group>";
@@ -952,7 +947,7 @@
 			files = (
 			);
 			inputPaths = (
-				"${PODS_ROOT}/Target Support Files/Pods-Book_Reader/Pods-Book_Reader-frameworks.sh",
+				"${SRCROOT}/Pods/Target Support Files/Pods-Book_Reader/Pods-Book_Reader-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/AFNetworking/AFNetworking.framework",
 				"${BUILT_PRODUCTS_DIR}/FMDB/FMDB.framework",
 				"${BUILT_PRODUCTS_DIR}/IQKeyboardManager/IQKeyboardManager.framework",
@@ -979,7 +974,7 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "\"${PODS_ROOT}/Target Support Files/Pods-Book_Reader/Pods-Book_Reader-frameworks.sh\"\n";
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Book_Reader/Pods-Book_Reader-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -1002,7 +997,7 @@
 				5222067320E47DFB00210706 /* UIButton+TouchAreaInsets.m in Sources */,
 				BDD51BB0222D0B9D0097B8F3 /* UnsplashImageModel.m in Sources */,
 				522205B620E0757F00210706 /* main.m in Sources */,
-				5222063D20E1DC4800210706 /* BookReadVC_old.m in Sources */,
+				5222063D20E1DC4800210706 /* BookReadVC.m in Sources */,
 				5222062720E0E8C600210706 /* HYDatabase.m in Sources */,
 				5222065520E2134D00210706 /* BookReadContentVC.m in Sources */,
 				BDD51BBE222D21B80097B8F3 /* UnsplashAPI.m in Sources */,
@@ -1017,8 +1012,7 @@
 				5222061520E0C0CA00210706 /* NSError+HYError.m in Sources */,
 				522206A320EB21AD00210706 /* BookSaveInfoModel.m in Sources */,
 				522206B720EB427200210706 /* MainBookRightCell.m in Sources */,
-				5222064520E1DED900210706 /* BookReadAPIVM_old.m in Sources */,
-				52613B43221ECADB00A911AD /* BookReadAPIVM.m in Sources */,
+				5222064520E1DED900210706 /* BookReadAPIVM.m in Sources */,
 				BD6B7FA1221D225F000E5C19 /* BookPageVC.m in Sources */,
 				522205DF20E07A9700210706 /* MBProgressHUD+NJ.m in Sources */,
 				5222066220E23F7A00210706 /* BookRecordModel+database.m in Sources */,
