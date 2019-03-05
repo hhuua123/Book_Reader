@@ -30,6 +30,7 @@ typedef void (^HubFail)(NSString* text);
 /* 获取后一界面*/
 - (UIViewController*)viewControllerAfterViewController:(UIViewController *)viewController DoubleSided:(BOOL)doubleSided;
 
+/* 按照序号加载章节*/
 - (void)loadChapterWithIndex:(NSInteger)index;
 
 /* 获取书名*/
