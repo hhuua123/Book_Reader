@@ -172,7 +172,7 @@
 
 - (void)initialData
 {
-#pragma mark -
+#pragma mark - 设置ViewModel的反向回调
     /* 数据加载*/
     kWeakSelf(self);
     [self.viewModel loadDataWithSuccess:^(UIViewController *currentVC) {

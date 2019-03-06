@@ -10,7 +10,7 @@
 
 @interface UIView (MBP)
 
-@property (nonatomic,strong) dispatch_source_t show_mbp_t;
+@property (strong, nonatomic) dispatch_source_t show_mbp_t;
 
 @end
 

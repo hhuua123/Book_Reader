@@ -32,13 +32,6 @@
     [self.window makeKeyAndVisible];
 
     [self configureBoardManager];
-    return YES;
-    
-//    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-//    UINavigationController* navi = [[UINavigationController alloc] initWithRootViewController:[[UnsplashImageVC alloc] init]];
-//    self.window.rootViewController = navi;
-//
-//    [self.window makeKeyAndVisible];
     
     return YES;
 }

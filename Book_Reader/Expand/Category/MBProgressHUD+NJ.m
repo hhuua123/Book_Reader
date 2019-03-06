@@ -139,6 +139,8 @@ static dispatch_source_t show_t;
     dispatch_source_set_event_handler(view.show_mbp_t, ^{
         [self showMessage:message toView:view];
     });
+    
+    dispatch_resume(view.show_mbp_t);
 }
 
 /**
@@ -198,7 +200,7 @@ static char* ShowMbpT = "UIViewShowMbpT";
 
 - (void)setShow_mbp_t:(dispatch_source_t)show_mbp_t
 {
-    objc_setAssociatedObject(self, ShowMbpT, nil, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
+    objc_setAssociatedObject(self, ShowMbpT, show_mbp_t, OBJC_ASSOCIATION_RETAIN_NONATOMIC);
 }
 
 - (dispatch_source_t)show_mbp_t

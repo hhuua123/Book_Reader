@@ -16,8 +16,13 @@
 
 - (void)touchesEnded:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event
 {
-    if (_block){
-        _block();
+    CGPoint point = [[touches anyObject] locationInView:self.view];
+    CGRect center = CGRectMake(kScreenWidth/3, 0, kScreenWidth/3, kScreenHeight);
+    
+    if (CGRectContainsPoint(center, point)){
+        if (_block){
+            _block();
+        }
     }
 }
 
